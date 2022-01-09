@@ -1,0 +1,3 @@
+[submodule "shinden"]
+	path = shinden
+	url = https://github.com/overflowerror/shinden
