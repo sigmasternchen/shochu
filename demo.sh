@@ -1,20 +1,17 @@
 #!/bin/bash
 
 . base.sh
+. mysql.sh
+. credentials.sh
+
+connect "$mysqlHost" "$mysqlUser" "$mysqlPassword" "$mysqlDB"
 
 route GET / index
 index() {
 	endHeaders
 
-	echo "Hello World"
-}
-
-route GET /foo foobar
-foobar() {
-	status 417
-	endHeaders
-
-	echo "bar"
+	echo "Users:"
+	echo "SELECT * FROM users" | query | getColumns 2
 }
 
 route GET /debug debug
