@@ -3,16 +3,22 @@
 . base.sh
 . mysql.sh
 . credentials.sh
+. shinden/engine.sh
 
 connect "$mysqlHost" "$mysqlUser" "$mysqlPassword" "$mysqlDB"
 
 route GET / index
 index() {
+	header "Content-Type" "text/html"
 	endHeaders
 
-	echo "Users:"
-	echo "SELECT * FROM users" | query | getColumns 2
+	title="Test"
+	users=($(echo "SELECT * FROM users" | query | getColumns 2))
+
+	template "templates/demo.html.templ" ""
 }
+
+
 
 route GET /debug debug
 debug() {
