@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. base.sh
+. utils.sh
+. uri.sh
+. router.sh
 . mysql.sh
 . credentials.sh
 . shinden/engine.sh
