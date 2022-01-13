@@ -29,10 +29,10 @@ session() {
 	
 	value="$(queryString "val")"
 	if test ! -z "$value"; then
-		setSession "$value"
+		setSessionValue "val" "$value"
 		echo "saved to session"
 	else
-		getSession
+		getSessionValue "val"
 	fi
 }
 

@@ -67,12 +67,30 @@ startSession() {
 	fi
 }
 
-getSession() {
+getSessionRaw() {
 	_getSession "$(_getSessionId)" | tail -n +2
 }
 
-setSession() {
+setSessionRaw() {
 	if _hasSession; then
 		echo "$1" | cat <(_getSessionDate) - > "$(_makeSessionPath "$(_getSessionId)")"
 	fi
+}
+
+getSessionValue() {
+	key="$1"
+	getSessionRaw | grep -e "^$key=" | cut -d= -f2
+}
+
+setSessionValue() {
+	key="$1"
+	value="$2"
+	setSessionRaw "$(
+		getSessionRaw | while read entry; do
+			if test -z "$(echo "$entry" | grep -e "^$key=")"; then
+				echo "$entry"
+			fi
+		done
+		echo "$key=$value"
+	)"
 }
