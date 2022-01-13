@@ -4,6 +4,8 @@
 . uri.sh
 . router.sh
 . mysql.sh
+. cookies.sh
+. sessions.sh
 . credentials.sh
 . shinden/engine.sh
 
@@ -20,7 +22,19 @@ index() {
 	template "templates/demo.html.templ" ""
 }
 
-
+route GET /session session
+session() {
+	startSession
+	endHeaders
+	
+	value="$(queryString "val")"
+	if test ! -z "$value"; then
+		setSession "$value"
+		echo "saved to session"
+	else
+		getSession
+	fi
+}
 
 route GET /debug debug
 debug() {
