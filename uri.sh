@@ -11,7 +11,7 @@ _query() {
 	done
 }
 
-query() {
+queryString() {
 	echo "$QUERY_STRING" | _query "$1"
 }
 
