@@ -80,6 +80,11 @@ header() {
 	echo "$1: $2"
 }
 
+redirect() {
+	status 302
+	header "Location" "$1"
+}
+
 endHeaders() {
 	if test "$_hasStatus" = 0; then
 		status 200
