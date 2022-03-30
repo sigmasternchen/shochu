@@ -17,6 +17,12 @@ queryString() {
 
 _formData=""
 
+cacheFormData() {
+	if test -z "$_formData"; then
+		_formData="$(cat)"
+	fi
+}
+
 formData() {
 	if test -z "$_formData"; then
 		_formData="$(cat)"

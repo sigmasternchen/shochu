@@ -32,8 +32,8 @@ _getSession() {
 }
 
 _newSessionId() {
-	base="$(date -Ins -u)"
-	random="$RANDOM"
+	local base="$(date -Ins -u)"
+	local random="$RANDOM"
 	while _getSession "$(echo "$base$random" | md5sum | cut -d' ' -f1)" > /dev/null; do
 		random="$RANDOM"
 	done

@@ -26,16 +26,15 @@ query() {
 
 escape() {
 	echo "$1" |
-		sed "s/\\/\\\\/g" |
+		sed 's/\\/\\\\/g' |
 		sed "s/'/\\'/g" |
-		sed "s/\"/\\\"/g" |
-		sed "s/\n/\\n/g" |
-		sed "s/\r/\\r/g" |
-		sed "s/\t/\\t/g" |
-		sed "s/\Z/\\Z/g" |
-		sed "s/\b/\\b/g" |
-		sed "s/%/\\%/g" |
-		sed "s/_/\\_/g"
+		sed 's/\"/\\\"/g' |
+		sed 's/\n/\\n/g' |
+		sed 's/\r/\\r/g' |
+		sed 's/\t/\\t/g' |
+		sed 's/\Z/\\Z/g' |
+		sed 's/%/\\%/g' |
+		sed 's/_/\\_/g'
 }
 
 getColumns() {

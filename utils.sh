@@ -4,7 +4,7 @@ _hasStatus=0
 
 status() {
 	_hasStatus=1
-	status="$1"
+	local status="$1"
 	echo -n "Status: $status "
 	case "$status" in
 		100) echo "Continue" ;;

@@ -20,8 +20,8 @@ _default404() {
 }
 
 _matchPaths() {
-	actual="$1"
-	search="$2"
+	local actual="$1"
+	local search="$2"
 
 	# TODO: add wildcards
 	test "$actual" = "$search"
